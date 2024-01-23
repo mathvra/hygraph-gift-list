@@ -4,12 +4,13 @@ import Link from "next/link";
 
 const GET_PRODUCTS = gql`
   query PRODUCTS {
-    products {
-      isAssigned
-      description
-      id
+    allProducts {
       name
+      description
       url
+      isAssigned
+      assignedName
+      assignedPhone
     }
   }
 `;
@@ -25,17 +26,26 @@ export default function Home() {
     <main>
       <h1>Lista de casamento de Lays e Matheus</h1>
       ---------------------
-      {data.products.map((product: any, index: number) => {
-        return (
-          <div key={index}>
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <Link href={product.url}>Sugestão de presente</Link>
-            <br />
-            ---------------------
-          </div>
-        );
-      })}
+      {data.allProducts.map(
+        (
+          {
+            name,
+            description,
+            url,
+          }: { name: string; description: string; url: string },
+          index: number
+        ) => {
+          return (
+            <div key={index}>
+              <h3>{name}</h3>
+              <p>{description}</p>
+              <Link href={url}>Sugestão de presente</Link>
+              <br />
+              ---------------------
+            </div>
+          );
+        }
+      )}
     </main>
   );
 }

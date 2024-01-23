@@ -1,8 +1,8 @@
 "use client";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
-const token = process.env.NEXT_PUBLIC_HYGRAPH_TOKEN;
-const uri = process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT;
+const token = process.env.NEXT_PUBLIC_SANITY_TOKEN;
+const uri = process.env.NEXT_PUBLIC_SANITY_ENDPOINT;
 
 const client = new ApolloClient({
   uri: uri,
