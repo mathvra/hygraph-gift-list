@@ -25,9 +25,9 @@ export default function Home() {
     <main>
       <h1>Lista de casamento de Lays e Matheus</h1>
       ---------------------
-      {data.products.map((product: any) => {
+      {data.products.map((product: any, index: number) => {
         return (
-          <div>
+          <div key={index}>
             <h3>{product.name}</h3>
             <p>{product.description}</p>
             <Link href={product.url}>Sugestão de presente</Link>
