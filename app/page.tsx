@@ -8,9 +8,6 @@ const GET_PRODUCTS = gql`
       name
       description
       url
-      isAssigned
-      assignedName
-      assignedPhone
     }
   }
 `;
