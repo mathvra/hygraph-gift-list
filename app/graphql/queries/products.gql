@@ -1,9 +1,9 @@
 query PRODUCTS {
-  products {
-    assigned
-    description
-    id
+  allProducts {
     name
+    description
     url
+    _id
+    isAssigned
   }
 }
