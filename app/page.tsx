@@ -1,18 +1,7 @@
 "use client";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Link from "next/link";
-
-const GET_PRODUCTS = gql`
-  query PRODUCTS {
-    allProducts {
-      name
-      description
-      url
-      _id
-      isAssigned
-    }
-  }
-`;
+import GET_PRODUCTS from "./graphql/queries/products.gql";
 
 const token = process.env.NEXT_PUBLIC_SANITY_TOKEN;
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;

@@ -1,4 +1,4 @@
-query PRODUCTS {
+query GET_PRODUCTS {
   allProducts {
     name
     description
