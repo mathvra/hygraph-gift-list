@@ -2,6 +2,7 @@
 import { useQuery } from "@apollo/client";
 import Link from "next/link";
 import GET_PRODUCTS from "./graphql/queries/products.gql";
+import { FormEvent } from "react";
 
 const token = process.env.NEXT_PUBLIC_SANITY_TOKEN;
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -13,14 +14,22 @@ export default function Home() {
     return <div>Carregando...</div>;
   }
 
-  function handleClick(id: string, isAssigned: boolean) {
-    console.log(id, isAssigned);
+  function handleSubmit(
+    e: FormEvent<HTMLFormElement>,
+    id: string,
+    isAssigned: boolean
+  ) {
+    e.preventDefault();
+    console.log(e.currentTarget.assignedName.value);
+    console.log(e.currentTarget.assignedPhone.value);
     const mutations = [
       {
         patch: {
           id: id,
           set: {
             isAssigned: !isAssigned,
+            assignedName: e.currentTarget.assignedName.value,
+            assignedPhone: e.currentTarget.assignedPhone.value,
           },
         },
       },
@@ -69,9 +78,13 @@ export default function Home() {
               <p>{description}</p>
               <Link href={url}>Sugestão de presente</Link>
               <br />
-              <button onClick={() => handleClick(_id, isAssigned)}>
-                Assinar
-              </button>
+              <form onSubmit={(e) => handleSubmit(e, _id, isAssigned)}>
+                <input type="text" name="assignedName" />
+                <br />
+                <input type="tel" name="assignedPhone" />
+                <br />
+                <button type="submit">Assinar</button>
+              </form>
               <br />
               ---------------------
             </div>
