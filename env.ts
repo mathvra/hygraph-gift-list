@@ -8,22 +8,25 @@ export const projectId = assertValue(
   "Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID"
 );
 
-export const endpoint = assertValue(
-  process.env.NEXT_PUBLIC_SANITY_ENDPOINT,
-  "Missing environment variable: NEXT_PUBLIC_SANITY_ENDPOINT"
-);
-
 export const token = assertValue(
   process.env.NEXT_PUBLIC_SANITY_TOKEN,
   "Missing environment variable: NEXT_PUBLIC_SANITY_TOKEN"
 );
 
+export const versioApi = assertValue(
+  process.env.NEXT_PUBLIC_SANITY_VERSION,
+  "Missing environment variable: NEXT_PUBLIC_SANITY_VERSION"
+);
+
 export const useCdn = false;
 
-function assertValue<T>(v: T | undefined, errorMessage: string): T {
-  if (v === undefined) {
+function assertValue<T>(
+  environmentVariable: T | undefined,
+  errorMessage: string
+): T {
+  if (environmentVariable === undefined) {
     throw new Error(errorMessage);
   }
 
-  return v;
+  return environmentVariable;
 }

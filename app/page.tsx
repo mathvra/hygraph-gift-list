@@ -3,9 +3,7 @@ import { useQuery } from "@apollo/client";
 import Link from "next/link";
 import GET_PRODUCTS from "./graphql/queries/products.gql";
 import { FormEvent } from "react";
-
-const token = process.env.NEXT_PUBLIC_SANITY_TOKEN;
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+import { token, projectId, dataset, versioApi } from "../env";
 
 export default function Home() {
   const { data, loading, refetch } = useQuery(GET_PRODUCTS);
@@ -36,7 +34,7 @@ export default function Home() {
     ];
 
     fetch(
-      `https://${projectId}.api.sanity.io/v2023-08-01/data/mutate/production`,
+      `https://${projectId}.api.sanity.io/${versioApi}/data/mutate/${dataset}`,
       {
         method: "post",
         headers: {

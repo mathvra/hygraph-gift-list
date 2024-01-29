@@ -4,7 +4,7 @@
 
 import { defineConfig, isDev } from "sanity";
 import { structureTool } from "sanity/structure";
-import { dataset, projectId } from "./sanity/env";
+import { dataset, projectId } from "./env";
 import { schema } from "./sanity/schemas";
 import { ptBRLocale } from "@sanity/locale-pt-br";
 
