@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FormEvent } from "react";
-import { token, projectId, dataset, versioApi } from "../../../env";
+import { token, projectId, dataset, versionApi } from "../../../env";
 
 interface GiftItemProps {
   name: string;
@@ -39,7 +39,7 @@ export default function GiftItem({
     ];
 
     fetch(
-      `https://${projectId}.api.sanity.io/${versioApi}/data/mutate/${dataset}`,
+      `https://${projectId}.api.sanity.io/${versionApi}/data/mutate/${dataset}`,
       {
         method: "post",
         headers: {

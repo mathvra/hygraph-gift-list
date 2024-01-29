@@ -13,7 +13,7 @@ export const token = assertValue(
   "Missing environment variable: NEXT_PUBLIC_SANITY_TOKEN"
 );
 
-export const versioApi = assertValue(
+export const versionApi = assertValue(
   process.env.NEXT_PUBLIC_SANITY_VERSION,
   "Missing environment variable: NEXT_PUBLIC_SANITY_VERSION"
 );
