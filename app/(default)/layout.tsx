@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import ApolloWrapper from "./ApolloWrapper";
+import { Raleway } from "next/font/google";
+import "../globals.css";
+import ApolloWrapper from "../ApolloWrapper";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const raleway = Raleway({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Lays e Matheus",
@@ -17,8 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>
+      <body className={raleway.className}>
+        <Header />
         <ApolloWrapper>{children}</ApolloWrapper>
+        <Footer />
       </body>
     </html>
   );
