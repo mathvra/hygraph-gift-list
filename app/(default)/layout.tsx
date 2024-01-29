@@ -5,7 +5,7 @@ import ApolloWrapper from "../ApolloWrapper";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const raleway = Raleway({ subsets: ["latin"] });
+const raleway = Raleway({ subsets: ["latin-ext"] });
 
 export const metadata: Metadata = {
   title: "Lays e Matheus",

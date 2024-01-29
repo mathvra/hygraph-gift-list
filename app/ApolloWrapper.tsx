@@ -1,6 +1,6 @@
 "use client";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { projectId, dataset, versionApi, token } from "../env";
+import { projectId, dataset, versionApi, token } from "@/env";
 
 const client = new ApolloClient({
   uri: `https://${projectId}.api.sanity.io/${versionApi}/graphql/${dataset}/default`,

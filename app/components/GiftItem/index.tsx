@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FormEvent } from "react";
-import { token, projectId, dataset, versionApi } from "../../../env";
+import { token, projectId, dataset, versionApi } from "@/env";
 
 interface GiftItemProps {
   name: string;

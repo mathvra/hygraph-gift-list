@@ -1,6 +1,6 @@
 "use client";
 import { useQuery } from "@apollo/client";
-import GET_PRODUCTS from "../../graphql/queries/products.gql";
+import GET_PRODUCTS from "@/app/graphql/queries/products.gql";
 import GiftItem from "../GiftItem";
 
 export default function GiftList() {

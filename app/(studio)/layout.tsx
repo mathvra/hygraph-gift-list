@@ -1,10 +1,12 @@
-export default function RootLayout({
+import "./studio.css";
+
+export default function StudioRootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html>
       <body>{children}</body>
     </html>
   );
