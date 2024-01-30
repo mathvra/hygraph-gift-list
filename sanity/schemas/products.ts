@@ -26,6 +26,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "image",
+      type: "image",
+      title: "Imagem do produto",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "isAssigned",
       type: "boolean",
       title: "Produto assinado",

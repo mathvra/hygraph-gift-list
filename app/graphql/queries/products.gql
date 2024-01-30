@@ -1,9 +1,14 @@
-query GET_PRODUCTS {
-  allProducts {
+query GET_PRODUCTS($offset: Int, $limit: Int) {
+  allProducts(offset: $offset, limit: $limit) {
     name
     description
     url
     _id
     isAssigned
+    image {
+      asset {
+        url
+      }
+    }
   }
 }
