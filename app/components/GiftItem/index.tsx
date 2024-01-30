@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { token, projectId, dataset, versionApi } from "@/env";
 
 interface GiftItemProps {
@@ -22,12 +22,15 @@ export default function GiftItem({
   refetch,
   imageUrl,
 }: GiftItemProps) {
+  const [submitLoading, setSubmitLoading] = useState(false);
+
   function handleSubmit(
     e: FormEvent<HTMLFormElement>,
     id: string,
     isAssigned: boolean
   ) {
     e.preventDefault();
+    setSubmitLoading(true);
     const mutations = [
       {
         patch: {
@@ -53,7 +56,10 @@ export default function GiftItem({
       }
     )
       .then((response) => response.json())
-      .then(() => refetch())
+      .then(() => {
+        refetch();
+        setSubmitLoading(false);
+      })
       .catch((error) => console.error(error));
   }
 
@@ -80,7 +86,11 @@ export default function GiftItem({
           <br />
           <input type="tel" name="assignedPhone" required minLength={11} />
           <br />
-          <button type="submit">Assinar</button>
+          {submitLoading ? (
+            <button>Carregando...</button>
+          ) : (
+            <button type="submit">Assinar</button>
+          )}
         </form>
       )}
       <br />
