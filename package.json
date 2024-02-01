@@ -15,6 +15,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/locale-pt-br": "^1.0.3",
     "@sanity/vision": "^3.26.1",
+    "@vercel/analytics": "^1.1.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "graphql": "^16.8.1",
