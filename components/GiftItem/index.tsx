@@ -84,9 +84,21 @@ export default function GiftItem({
         <b>Produto assinado!</b>
       ) : (
         <form onSubmit={(e) => handleSubmit(e, _id, isAssigned)}>
-          <input type="text" name="assignedName" required minLength={5} />
+          <input
+            type="text"
+            name="assignedName"
+            required
+            minLength={5}
+            className="border-primary border-2 rounded-sm"
+          />
           <br />
-          <input type="tel" name="assignedPhone" required minLength={11} />
+          <input
+            type="tel"
+            name="assignedPhone"
+            required
+            minLength={11}
+            className="border-primary border-2 rounded-sm"
+          />
           <br />
           {submitLoading ? (
             <Button disabled>
