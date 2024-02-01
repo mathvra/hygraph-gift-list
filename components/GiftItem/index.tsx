@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { token, projectId, dataset, versionApi } from "@/env";
+import { Button } from "../ui/button";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 interface GiftItemProps {
   name: string;
@@ -87,9 +89,12 @@ export default function GiftItem({
           <input type="tel" name="assignedPhone" required minLength={11} />
           <br />
           {submitLoading ? (
-            <button>Carregando...</button>
+            <Button disabled>
+              <ReloadIcon />
+              Carregando...
+            </Button>
           ) : (
-            <button type="submit">Assinar</button>
+            <Button type="submit">Assinar</Button>
           )}
         </form>
       )}

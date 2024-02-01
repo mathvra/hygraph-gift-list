@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
-import "../globals.css";
 import ApolloWrapper from "../ApolloWrapper";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import "../globals.css";
 
 const raleway = Raleway({ subsets: ["latin-ext"] });
 
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={raleway.className}>
+      <body className={`${raleway.className} container mx-auto`}>
         <Header />
         <ApolloWrapper>{children}</ApolloWrapper>
         <Footer />

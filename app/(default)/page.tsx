@@ -1,4 +1,4 @@
-import GiftList from "../components/GiftList";
+import GiftList from "../../components/GiftList";
 
 export default function Home() {
   return (
