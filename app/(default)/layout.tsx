@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import ApolloWrapper from "../ApolloWrapper";
-import Header from "../../components/Header";
+import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import "../globals.css";
@@ -20,10 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${raleway.className} container mx-auto`}>
+      <body className={`${raleway.className}`}>
         <Analytics />
         <Header />
-        <ApolloWrapper>{children}</ApolloWrapper>
+        <div className="container mx-auto">
+          <ApolloWrapper>{children}</ApolloWrapper>
+        </div>
         <Footer />
       </body>
     </html>

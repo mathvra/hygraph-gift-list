@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { token, projectId, dataset, versionApi } from "@/env";
 import { Button } from "../ui/button";
-import { ReloadIcon } from "@radix-ui/react-icons";
+import { CircleNotch } from "@phosphor-icons/react";
 
 interface GiftItemProps {
   name: string;
@@ -89,7 +89,7 @@ export default function GiftItem({
             name="assignedName"
             required
             minLength={5}
-            className="border-primary border-2 rounded-sm"
+            className="border-ring border-2 rounded-sm"
           />
           <br />
           <input
@@ -97,12 +97,12 @@ export default function GiftItem({
             name="assignedPhone"
             required
             minLength={11}
-            className="border-primary border-2 rounded-sm"
+            className="border-ring border-2 rounded-sm"
           />
           <br />
           {submitLoading ? (
-            <Button disabled>
-              <ReloadIcon />
+            <Button>
+              <CircleNotch className="animate-spin" weight="bold" />
               Carregando...
             </Button>
           ) : (

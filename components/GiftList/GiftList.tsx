@@ -1,8 +1,10 @@
 "use client";
 import { useQuery } from "@apollo/client";
 import GET_PRODUCTS from "@/app/graphql/queries/products.gql";
-import GiftItem from "../GiftItem";
+import GiftItem from "../GiftItem/GiftItem";
 import { useState } from "react";
+import { Button } from "../ui/button";
+import { CircleNotch } from "@phosphor-icons/react";
 
 export default function GiftList() {
   const [loadingFetchMore, setLoadingFetchMore] = useState(false);
@@ -22,7 +24,7 @@ export default function GiftList() {
   if (loading) return <p>Carregando...</p>;
 
   return (
-    <main>
+    <section>
       {giftList.allProducts.map((giftItem: any, index: number) => (
         <GiftItem
           key={index}
@@ -36,9 +38,12 @@ export default function GiftList() {
         />
       ))}
       {loadingFetchMore ? (
-        <button>Carregando...</button>
+        <Button>
+          <CircleNotch weight="bold" className="animate-spin" />
+          Carregando...
+        </Button>
       ) : (
-        <button
+        <Button
           onClick={() => {
             setLoadingFetchMore(true);
             fetchMore({
@@ -49,8 +54,8 @@ export default function GiftList() {
           }}
         >
           Ver mais
-        </button>
+        </Button>
       )}
-    </main>
+    </section>
   );
 }
