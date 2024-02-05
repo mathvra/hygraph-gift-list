@@ -58,6 +58,10 @@ const config = {
           DEFAULT: "#ffffff",
           foreground: "#020817",
         },
+        neutral: {
+          DEFAULT: "#1D1D1D",
+          foreground: "#ffffff",
+        },
       },
       borderRadius: {
         lg: "0.5rem",

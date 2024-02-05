@@ -24,7 +24,7 @@ export default function GiftList() {
   if (loading) return <p>Carregando...</p>;
 
   return (
-    <section>
+    <section className="container mx-auto">
       {giftList.allProducts.map((giftItem: any, index: number) => (
         <GiftItem
           key={index}

@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={`${raleway.className}`}>
         <Analytics />
         <Header />
-        <div className="container mx-auto">
+        <div>
           <ApolloWrapper>{children}</ApolloWrapper>
         </div>
         <Footer />
