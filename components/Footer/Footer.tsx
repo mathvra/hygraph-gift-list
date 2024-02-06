@@ -1,6 +1,7 @@
-import { ArrowUp, Info } from "@phosphor-icons/react/dist/ssr";
+import { Info } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import BackToTop from "../BackToTop/BackToTop";
 
 export default function Footer() {
   return (
@@ -14,11 +15,7 @@ export default function Footer() {
                 Mais informações
               </Link>
             </Button>
-            <Button size={"icon"} variant={"secondaryInverted"} asChild>
-              <Link href="/">
-                <ArrowUp weight="bold" />
-              </Link>
-            </Button>
+            <BackToTop />
           </div>
         </div>
       </div>

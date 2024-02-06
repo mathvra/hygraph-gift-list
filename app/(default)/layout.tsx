@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import ApolloWrapper from "../ApolloWrapper";
 import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import "../globals.css";
 
