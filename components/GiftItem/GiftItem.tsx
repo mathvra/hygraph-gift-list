@@ -1,9 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { token, projectId, dataset, versionApi } from "@/env";
 import { Button } from "../ui/button";
-import { CircleNotch } from "@phosphor-icons/react";
+import { Eye, PencilSimpleLine } from "@phosphor-icons/react/dist/ssr";
 
 interface GiftItemProps {
   name: string;
@@ -66,52 +65,49 @@ export default function GiftItem({
   }
 
   return (
-    <div>
+    <div className="flex flex-col border border-primary-2 rounded-lg">
       {imageUrl && (
-        <Image
-          src={imageUrl}
-          alt={name}
-          width={100}
-          height={100}
-          priority={false}
-        />
-      )}
-      <h3>{name}</h3>
-      <p>{description}</p>
-      <Link href={url}>Sugestão de presente</Link>
-      <br />
-      {isAssigned ? (
-        <b>Produto assinado!</b>
-      ) : (
-        <form onSubmit={(e) => handleSubmit(e, _id, isAssigned)}>
-          <input
-            type="text"
-            name="assignedName"
-            required
-            minLength={5}
-            className="border-ring border-2 rounded-sm"
-          />
-          <br />
-          <input
-            type="tel"
-            name="assignedPhone"
-            required
-            minLength={11}
-            className="border-ring border-2 rounded-sm"
-          />
-          <br />
-          {submitLoading ? (
-            <Button>
-              <CircleNotch className="animate-spin" weight="bold" />
-              Carregando...
-            </Button>
-          ) : (
-            <Button type="submit">Assinar</Button>
+        <div className="px-4 pt-4 relative">
+          {isAssigned && (
+            <div className="absolute w-full h-full top-0 left-0 p-1">
+              <div className="bg-secondary/75 flex items-center justify-center rounded h-full">
+                <p className="font-light text-2xl text-secondary-foreground">
+                  Assinado
+                </p>
+              </div>
+            </div>
           )}
-        </form>
+          <Image
+            src={imageUrl}
+            alt={name}
+            width={300}
+            height={300}
+            className="h-36 object-contain"
+            priority={false}
+          />
+        </div>
       )}
-      <br />
-      ---------------------
+      <div
+        className={`${
+          isAssigned ? "bg-white" : "bg-primary-2"
+        } flex-grow flex flex-col justify-between p-4 gap-4`}
+      >
+        <div className="flex flex-col gap-2">
+          <h3 className="font-bold leading-4 line-clamp-2">{name}</h3>
+          <p className="text-xs line-clamp-3">{description}</p>
+        </div>
+        {isAssigned ? (
+          <Button variant={"secondary"}>
+            <Eye weight="bold" />
+            Ver detalhes
+          </Button>
+        ) : (
+          <Button>
+            <PencilSimpleLine weight="bold" />
+            Assinar
+          </Button>
+        )}
+      </div>
     </div>
   );
 }

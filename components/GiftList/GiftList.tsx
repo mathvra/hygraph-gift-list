@@ -24,38 +24,43 @@ export default function GiftList() {
   if (loading) return <p>Carregando...</p>;
 
   return (
-    <section className="container mx-auto">
-      {giftList.allProducts.map((giftItem: any, index: number) => (
-        <GiftItem
-          key={index}
-          name={giftItem.name}
-          description={giftItem.description}
-          url={giftItem.url}
-          _id={giftItem._id}
-          isAssigned={giftItem.isAssigned}
-          imageUrl={giftItem?.image?.asset?.url && giftItem.image.asset.url}
-          refetch={refetch}
-        />
-      ))}
-      {loadingFetchMore ? (
-        <Button>
-          <CircleNotch weight="bold" className="animate-spin" />
-          Carregando...
-        </Button>
-      ) : (
-        <Button
-          onClick={() => {
-            setLoadingFetchMore(true);
-            fetchMore({
-              variables: {
-                offset: giftList.allProducts.length,
-              },
-            }).then(() => setLoadingFetchMore(false));
-          }}
-        >
-          Ver mais
-        </Button>
-      )}
+    <section className="container mx-auto my-4">
+      <div className="grid grid-cols-wrapDefault lg:grid-cols-wrapLarge gap-4 mb-6">
+        {giftList.allProducts.map((giftItem: any, index: number) => (
+          <GiftItem
+            key={index}
+            name={giftItem.name}
+            description={giftItem.description}
+            url={giftItem.url}
+            _id={giftItem._id}
+            isAssigned={giftItem.isAssigned}
+            imageUrl={giftItem?.image?.asset?.url && giftItem.image.asset.url}
+            refetch={refetch}
+          />
+        ))}
+      </div>
+      <div className="mx-auto w-fit">
+        {loadingFetchMore ? (
+          <Button variant={"secondaryInverted"}>
+            <CircleNotch weight="bold" className="animate-spin" />
+            Carregando
+          </Button>
+        ) : (
+          <Button
+            variant={"secondary"}
+            onClick={() => {
+              setLoadingFetchMore(true);
+              fetchMore({
+                variables: {
+                  offset: giftList.allProducts.length,
+                },
+              }).then(() => setLoadingFetchMore(false));
+            }}
+          >
+            Carregar mais
+          </Button>
+        )}
+      </div>
     </section>
   );
 }

@@ -63,6 +63,10 @@ const config = {
           foreground: "#ffffff",
         },
       },
+      gridTemplateColumns: {
+        wrapDefault: "repeat(auto-fill,minmax(8rem,1fr))",
+        wrapLarge: "repeat(auto-fill,minmax(12.5rem,1fr))",
+      },
       borderRadius: {
         lg: "0.5rem",
         md: "calc(0.5rem - 2px)",
