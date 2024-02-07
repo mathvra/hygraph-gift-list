@@ -3,6 +3,7 @@ import { FormEvent, useState } from "react";
 import { token, projectId, dataset, versionApi } from "@/env";
 import { Button } from "../ui/button";
 import { Eye, PencilSimpleLine } from "@phosphor-icons/react/dist/ssr";
+import GiftDrawer from "../GiftDrawer/GiftDrawer";
 
 interface GiftItemProps {
   name: string;
@@ -96,17 +97,12 @@ export default function GiftItem({
           <h3 className="font-bold leading-4 line-clamp-2">{name}</h3>
           <p className="text-xs line-clamp-3">{description}</p>
         </div>
-        {isAssigned ? (
-          <Button variant={"secondary"}>
-            <Eye weight="bold" />
-            Ver detalhes
-          </Button>
-        ) : (
-          <Button>
-            <PencilSimpleLine weight="bold" />
-            Assinar
-          </Button>
-        )}
+        <GiftDrawer
+          isAssigned={isAssigned}
+          name={name}
+          description={description}
+          url={url}
+        />
       </div>
     </div>
   );
