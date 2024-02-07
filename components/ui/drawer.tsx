@@ -1,10 +1,9 @@
 "use client";
-
 import * as React from "react";
 //@ts-ignore
 import { Drawer as DrawerPrimitive } from "vaul";
-
 import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 
 const Drawer = ({
   shouldScaleBackground = true,
@@ -35,21 +34,55 @@ const DrawerOverlay = React.forwardRef<
 ));
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
+const drawerBartVariants = cva("mx-auto mt-4 h-2 w-[100px] rounded-full", {
+  variants: {
+    variant: {
+      default: "bg-primary-0",
+      secondary: "bg-secondary-0",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+export interface DrawerBarProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof drawerBartVariants> {}
+
+const DrawerBar = ({ className, variant, ...props }: DrawerBarProps) => (
+  <div className={cn(drawerBartVariants({ variant, className }))} {...props} />
+);
+DrawerBar.displayName = "DrawerBar";
+
+const drawerContentVariants = cva(
+  "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary-2",
+        secondary: "bg-secondary-2",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+export interface DrawerContentProps
+  extends React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>,
+    VariantProps<typeof drawerContentVariants> {}
+
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  DrawerContentProps
+>(({ variant, className, children, ...props }, ref) => (
   <DrawerPortal>
     <DrawerOverlay />
     <DrawerPrimitive.Content
       ref={ref}
-      className={cn(
-        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
-        className
-      )}
+      className={cn(drawerContentVariants({ variant, className }))}
       {...props}
     >
-      <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-primary-0" />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>
@@ -60,10 +93,7 @@ const DrawerHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
-    {...props}
-  />
+  <div className={cn("grid gap-1.5 p-4 text-start", className)} {...props} />
 );
 DrawerHeader.displayName = "DrawerHeader";
 
@@ -72,34 +102,64 @@ const DrawerFooter = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("mt-auto flex flex-col gap-2 p-4", className)}
+    className={cn("mt-auto flex flex-row gap-2 p-4", className)}
     {...props}
   />
 );
 DrawerFooter.displayName = "DrawerFooter";
 
+const drawerTitleVariants = cva(
+  "text-lg font-semibold leading-none tracking-tight",
+  {
+    variants: {
+      variant: {
+        default: "text-primary-0",
+        secondary: "text-secondary-0",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+export interface DrawerTitleProps
+  extends React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>,
+    VariantProps<typeof drawerTitleVariants> {}
+
 const DrawerTitle = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>
->(({ className, ...props }, ref) => (
+  DrawerTitleProps
+>(({ variant, className, ...props }, ref) => (
   <DrawerPrimitive.Title
     ref={ref}
-    className={cn(
-      "text-lg font-semibold leading-none tracking-tight",
-      className
-    )}
+    className={cn(drawerTitleVariants({ variant, className }))}
     {...props}
   />
 ));
 DrawerTitle.displayName = DrawerPrimitive.Title.displayName;
 
+const drawerDescriptionVariants = cva("text-sm text-muted-foreground", {
+  variants: {
+    variant: {
+      default: "text-primary-0",
+      secondary: "text-secondary-0",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+export interface DrawerDescriptionProps
+  extends React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>,
+    VariantProps<typeof drawerDescriptionVariants> {}
+
 const DrawerDescription = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>
->(({ className, ...props }, ref) => (
+  DrawerDescriptionProps
+>(({ variant, className, ...props }, ref) => (
   <DrawerPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn(drawerDescriptionVariants({ variant, className }))}
     {...props}
   />
 ));
@@ -109,6 +169,7 @@ export {
   Drawer,
   DrawerPortal,
   DrawerOverlay,
+  DrawerBar,
   DrawerTrigger,
   DrawerClose,
   DrawerContent,

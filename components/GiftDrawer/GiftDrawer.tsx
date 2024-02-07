@@ -7,6 +7,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
+  DrawerBar,
 } from "@/components/ui/drawer";
 import { Button } from "../ui/button";
 import { ArrowSquareOut, Eye, PencilSimpleLine } from "@phosphor-icons/react";
@@ -25,9 +26,10 @@ export default function GiftDrawer({
   description,
   url,
 }: GiftDrawerProps) {
+  const drawerVariant = isAssigned ? "secondary" : "default";
   return (
     <Drawer>
-      <DrawerTrigger>
+      <DrawerTrigger asChild>
         {isAssigned ? (
           <Button variant={"secondary"} className="w-full">
             <Eye weight="bold" />
@@ -40,29 +42,47 @@ export default function GiftDrawer({
           </Button>
         )}
       </DrawerTrigger>
-      <DrawerContent className="bg-primary-2">
-        <DrawerHeader className="text-start">
-          <DrawerTitle className="text-primary-0">{name}</DrawerTitle>
-          <DrawerDescription className="text-primary-0">
+      <DrawerContent variant={drawerVariant}>
+        <DrawerBar variant={drawerVariant} />
+        <DrawerHeader>
+          <DrawerTitle variant={drawerVariant}>{name}</DrawerTitle>
+          <DrawerDescription variant={drawerVariant}>
             {description}
           </DrawerDescription>
-          <Button asChild>
-            <Link href={url} target="_blank">
-              <ArrowSquareOut weight="bold" />
-              Ver na loja
-            </Link>
-          </Button>
-        </DrawerHeader>
-        <DrawerFooter className="flex flex-row">
-          <DrawerClose className="grow">
-            <Button variant="outline" className="w-full">
-              Cancelar
+          {!isAssigned && (
+            <Button asChild>
+              <Link href={url} target="_blank">
+                <ArrowSquareOut weight="bold" />
+                Ver na loja
+              </Link>
             </Button>
+          )}
+        </DrawerHeader>
+        <DrawerFooter>
+          <DrawerClose asChild>
+            {isAssigned ? (
+              <Button variant="secondaryWhite" className="w-1/2">
+                Voltar
+              </Button>
+            ) : (
+              <Button variant="defaultWhite" className="w-1/2">
+                Cancelar
+              </Button>
+            )}
           </DrawerClose>
-          <Button className="grow bg-primary-0">
-            <PencilSimpleLine weight="bold" />
-            Assinar
-          </Button>
+          {isAssigned ? (
+            <Button variant="secondary" className="w-1/2" asChild>
+              <Link href={url} target="_blank">
+                <ArrowSquareOut weight="bold" />
+                Ver na loja
+              </Link>
+            </Button>
+          ) : (
+            <Button variant="defaultStrong" className="w-1/2">
+              <PencilSimpleLine weight="bold" />
+              Assinar
+            </Button>
+          )}
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
