@@ -1,8 +1,4 @@
 import Image from "next/image";
-import { FormEvent, useState } from "react";
-import { token, projectId, dataset, versionApi } from "@/env";
-import { Button } from "../ui/button";
-import { Eye, PencilSimpleLine } from "@phosphor-icons/react/dist/ssr";
 import GiftDrawer from "../GiftDrawer/GiftDrawer";
 
 interface GiftItemProps {
@@ -24,47 +20,6 @@ export default function GiftItem({
   refetch,
   imageUrl,
 }: GiftItemProps) {
-  const [submitLoading, setSubmitLoading] = useState(false);
-
-  function handleSubmit(
-    e: FormEvent<HTMLFormElement>,
-    id: string,
-    isAssigned: boolean
-  ) {
-    e.preventDefault();
-    setSubmitLoading(true);
-    const mutations = [
-      {
-        patch: {
-          id: id,
-          set: {
-            isAssigned: !isAssigned,
-            assignedName: e.currentTarget.assignedName.value,
-            assignedPhone: e.currentTarget.assignedPhone.value,
-          },
-        },
-      },
-    ];
-
-    fetch(
-      `https://${projectId}.api.sanity.io/${versionApi}/data/mutate/${dataset}`,
-      {
-        method: "post",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ mutations }),
-      }
-    )
-      .then((response) => response.json())
-      .then(() => {
-        refetch();
-        setSubmitLoading(false);
-      })
-      .catch((error) => console.error(error));
-  }
-
   return (
     <div className="flex flex-col h-80 border border-primary-2 rounded-lg">
       {imageUrl && (
@@ -102,6 +57,8 @@ export default function GiftItem({
           name={name}
           description={description}
           url={url}
+          id={_id}
+          refetch={refetch}
         />
       </div>
     </div>
