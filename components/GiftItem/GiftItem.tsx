@@ -66,9 +66,9 @@ export default function GiftItem({
   }
 
   return (
-    <div className="flex flex-col border border-primary-2 rounded-lg">
+    <div className="flex flex-col h-80 border border-primary-2 rounded-lg">
       {imageUrl && (
-        <div className="px-4 pt-4 relative">
+        <div className="px-2 py-2 relative">
           {isAssigned && (
             <div className="absolute w-full h-full top-0 left-0 p-1">
               <div className="bg-secondary/75 flex items-center justify-center rounded h-full">
@@ -83,7 +83,7 @@ export default function GiftItem({
             alt={name}
             width={300}
             height={300}
-            className="h-36 object-contain"
+            className="h-32 object-contain"
             priority={false}
           />
         </div>
@@ -91,7 +91,7 @@ export default function GiftItem({
       <div
         className={`${
           isAssigned ? "bg-white" : "bg-primary-2"
-        } flex-grow flex flex-col justify-between p-4 gap-4`}
+        } flex-grow flex flex-col justify-between p-4 gap-4 rounded-b-lg`}
       >
         <div className="flex flex-col gap-2">
           <h3 className="font-bold leading-4 line-clamp-2">{name}</h3>

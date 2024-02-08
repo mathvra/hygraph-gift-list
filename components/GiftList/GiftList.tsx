@@ -5,9 +5,11 @@ import GiftItem from "../GiftItem/GiftItem";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { CircleNotch } from "@phosphor-icons/react";
+import GiftItemLoading from "../GiftItemLoading/GiftItemLoading";
 
 export default function GiftList() {
   const [loadingFetchMore, setLoadingFetchMore] = useState(false);
+  const loadingItems = 10;
 
   const {
     data: giftList,
@@ -21,23 +23,27 @@ export default function GiftList() {
     },
   });
 
-  if (loading) return <p>Carregando...</p>;
-
   return (
     <section className="container mx-auto my-4">
       <div className="grid grid-cols-wrapDefault lg:grid-cols-wrapLarge gap-4 mb-6">
-        {giftList.allProducts.map((giftItem: any, index: number) => (
-          <GiftItem
-            key={index}
-            name={giftItem.name}
-            description={giftItem.description}
-            url={giftItem.url}
-            _id={giftItem._id}
-            isAssigned={giftItem.isAssigned}
-            imageUrl={giftItem?.image?.asset?.url && giftItem.image.asset.url}
-            refetch={refetch}
-          />
-        ))}
+        {loading
+          ? Array.from({ length: loadingItems }).map((item, index) => (
+              <GiftItemLoading key={index} />
+            ))
+          : giftList.allProducts.map((giftItem: any, index: number) => (
+              <GiftItem
+                key={index}
+                name={giftItem.name}
+                description={giftItem.description}
+                url={giftItem.url}
+                _id={giftItem._id}
+                isAssigned={giftItem.isAssigned}
+                imageUrl={
+                  giftItem?.image?.asset?.url && giftItem.image.asset.url
+                }
+                refetch={refetch}
+              />
+            ))}
       </div>
       <div className="mx-auto w-fit">
         {loadingFetchMore ? (
