@@ -71,39 +71,39 @@ export default function GiftDrawer({
               </Link>
             </Button>
           )}
-          <div>
-            {isAssigned ? (
-              <div className="mt-2">
-                <span className="text-secondary-0 font-bold">
-                  Esse presente já foi assinado!
-                </span>
-                <p className="text-secondary-0 text-sm">
-                  Não se preocupe, você pode escolher outro presente que esteja
-                  disponível na lista!
-                </p>
-              </div>
-            ) : (
-              <div className="mt-2">
-                <span className="text-primary-0 font-bold">
-                  Assinar presente:
-                </span>
-                <p className="text-sm">
-                  Preencha suas informações para garantir a sua assinatura do
-                  presente
-                </p>
-              </div>
-            )}
-          </div>
         </DrawerHeader>
-        <DrawerFooter>
-          {!isAssigned && (
-            <GiftForm
-              isAssigned={isAssigned}
-              id={id}
-              refetch={refetch}
-              setSubmitLoading={setSubmitLoading}
-            />
+        <div>
+          {isAssigned ? (
+            <div>
+              <span className="text-secondary-0 font-bold">
+                Esse presente já foi assinado!
+              </span>
+              <p className="text-secondary-0 text-sm">
+                Não se preocupe, você pode escolher outro presente que esteja
+                disponível na lista!
+              </p>
+            </div>
+          ) : (
+            <div>
+              <span className="text-primary-0 font-bold">
+                Assinar presente:
+              </span>
+              <p className="text-sm">
+                Preencha suas informações para garantir a sua assinatura do
+                presente
+              </p>
+            </div>
           )}
+        </div>
+        {!isAssigned && (
+          <GiftForm
+            isAssigned={isAssigned}
+            id={id}
+            refetch={refetch}
+            setSubmitLoading={setSubmitLoading}
+          />
+        )}
+        <DrawerFooter>
           <div className="flex gap-4">
             <DrawerClose asChild>
               {isAssigned ? (

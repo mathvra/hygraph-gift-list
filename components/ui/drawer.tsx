@@ -34,7 +34,7 @@ const DrawerOverlay = React.forwardRef<
 ));
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
-const drawerBartVariants = cva("mx-auto mt-4 h-2 w-[100px] rounded-full", {
+const drawerBartVariants = cva("mx-auto h-2 w-[100px] rounded-full", {
   variants: {
     variant: {
       default: "bg-primary-0",
@@ -55,7 +55,7 @@ const DrawerBar = ({ className, variant, ...props }: DrawerBarProps) => (
 DrawerBar.displayName = "DrawerBar";
 
 const drawerContentVariants = cva(
-  "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col gap-4 pb-4 rounded-t-[10px] border",
+  "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col gap-4 p-4 rounded-t-[10px] border ",
   {
     variants: {
       variant: {
@@ -93,7 +93,7 @@ const DrawerHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("grid gap-1.5 px-4 text-start", className)} {...props} />
+  <div className={cn("grid gap-1.5 text-start", className)} {...props} />
 );
 DrawerHeader.displayName = "DrawerHeader";
 
@@ -101,10 +101,7 @@ const DrawerFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn("mt-auto flex flex-col gap-4 px-4", className)}
-    {...props}
-  />
+  <div className={cn("mt-auto flex flex-col gap-4", className)} {...props} />
 );
 DrawerFooter.displayName = "DrawerFooter";
 
