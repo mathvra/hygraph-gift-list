@@ -46,7 +46,7 @@ export default function GiftDrawer({
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-        <Drawer.Content className="bg-zinc-100 flex flex-col rounded-t-lg fixed bottom-0 left-0 right-0 p-4 gap-4 after:!content-none">
+        <Drawer.Content className="bg-zinc-100 flex flex-col rounded-t-lg fixed bottom-0 left-0 right-0 p-4 gap-4 h-fit overflow-auto after:!content-none">
           <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300" />
           <Drawer.Title>{name}</Drawer.Title>
           <Drawer.Description>{description}</Drawer.Description>
