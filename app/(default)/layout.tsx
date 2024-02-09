@@ -20,10 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${raleway.className} flex flex-col min-h-screen`}>
+      <body
+        className={`${raleway.className} flex flex-col min-h-screen bg-background`}
+      >
         <Analytics />
         <Header />
-        <div className="grow">
+        <div className="grow bg-background" vaul-drawer-wrapper="">
           <ApolloWrapper>{children}</ApolloWrapper>
         </div>
         <Footer />
