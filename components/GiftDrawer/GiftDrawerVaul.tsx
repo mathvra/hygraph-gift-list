@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import { GiftForm } from "../GiftForm/GiftForm";
 import { useState } from "react";
+import { Input } from "../ui/input";
 
 interface GiftDrawerProps {
   isAssigned: boolean;
@@ -19,7 +20,7 @@ interface GiftDrawerProps {
   refetch: any;
 }
 
-export default function GiftDrawer({
+export default function GiftDrawerVaul({
   isAssigned,
   name,
   description,
@@ -46,9 +47,9 @@ export default function GiftDrawer({
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-        <Drawer.Content className="bg-zinc-100 flex flex-col rounded-t-lg fixed bottom-0 left-0 right-0">
+        <Drawer.Content className="bg-zinc-100 flex flex-col rounded-t-lg fixed bottom-0 left-0 right-0 min-h-vh h-fit max-h-dvh overflow-x-auto after:!bg-[red] after:!content-none">
           <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mt-4" />
-          <div className="flex flex-col overflow-auto p-4 gap-4">
+          <div className="flex flex-col p-4 gap-4">
             <Drawer.Title>{name}</Drawer.Title>
             <Drawer.Description>{description}</Drawer.Description>
             {!isAssigned && (

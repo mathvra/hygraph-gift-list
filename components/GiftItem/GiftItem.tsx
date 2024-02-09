@@ -1,6 +1,7 @@
 import Image from "next/image";
 import GiftDrawer from "../GiftDrawer/GiftDrawer";
 import GiftDrawerVaul from "../GiftDrawer/GiftDrawerVaul";
+import GiftModal from "../GiftModal/GiftModal";
 
 interface GiftItemProps {
   name: string;
@@ -61,7 +62,15 @@ export default function GiftItem({
           id={_id}
           refetch={refetch}
         /> */}
-        <GiftDrawerVaul
+        {/* <GiftDrawerVaul
+          isAssigned={isAssigned}
+          name={name}
+          description={description}
+          url={url}
+          id={_id}
+          refetch={refetch}
+        /> */}
+        <GiftModal
           isAssigned={isAssigned}
           name={name}
           description={description}
