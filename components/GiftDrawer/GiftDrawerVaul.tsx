@@ -48,6 +48,14 @@ export default function GiftDrawer({
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
         <Drawer.Content className="bg-zinc-100 flex flex-col rounded-t-lg fixed bottom-0 left-0 right-0 p-4 gap-4 h-fit max-h-fit overflow-auto after:!content-none">
           <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300" />
+          {!isAssigned && (
+            <GiftForm
+              isAssigned={isAssigned}
+              id={id}
+              refetch={refetch}
+              setSubmitLoading={setSubmitLoading}
+            />
+          )}
           <Drawer.Title>{name}</Drawer.Title>
           <Drawer.Description>{description}</Drawer.Description>
           {!isAssigned && (
@@ -81,14 +89,6 @@ export default function GiftDrawer({
               </div>
             )}
           </div>
-          {!isAssigned && (
-            <GiftForm
-              isAssigned={isAssigned}
-              id={id}
-              refetch={refetch}
-              setSubmitLoading={setSubmitLoading}
-            />
-          )}
           <div className="flex gap-4">
             <Drawer.Close asChild>
               {isAssigned ? (
