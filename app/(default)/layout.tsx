@@ -25,7 +25,7 @@ export default function RootLayout({
       >
         <Analytics />
         <Header />
-        <div className="grow bg-background" vaul-drawer-wrapper="">
+        <div className="grow bg-background">
           <ApolloWrapper>{children}</ApolloWrapper>
         </div>
         <Footer />
