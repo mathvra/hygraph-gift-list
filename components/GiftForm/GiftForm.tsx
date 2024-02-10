@@ -94,10 +94,14 @@ export function GiftForm({
           control={form.control}
           name="assignedName"
           render={({ field }: any) => (
-            <FormItem>
+            <FormItem autoFocus={false}>
               <FormLabel>Nome do assinante:</FormLabel>
               <FormControl>
-                <Input placeholder="Nome completo do assinante" {...field} />
+                <Input
+                  placeholder="Nome completo do assinante"
+                  {...field}
+                  autoFocus={false}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -110,7 +114,11 @@ export function GiftForm({
             <FormItem>
               <FormLabel>Telefone</FormLabel>
               <FormControl>
-                <Input placeholder="Telefone do assinante" {...field} />
+                <Input
+                  placeholder="Telefone do assinante"
+                  {...field}
+                  autoFocus={false}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

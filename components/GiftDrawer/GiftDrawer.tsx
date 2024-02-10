@@ -19,6 +19,8 @@ import {
 import Link from "next/link";
 import { GiftForm } from "../GiftForm/GiftForm";
 import { useState } from "react";
+import { Label } from "@radix-ui/react-label";
+import { Input } from "../ui/input";
 
 interface GiftDrawerProps {
   isAssigned: boolean;
@@ -57,8 +59,8 @@ export default function GiftDrawer({
         )}
       </DrawerTrigger>
       <DrawerContent variant={drawerVariant}>
-        <DrawerBar variant={drawerVariant} />
         <DrawerHeader>
+          <DrawerBar variant={drawerVariant} />
           <DrawerTitle variant={drawerVariant}>{name}</DrawerTitle>
           <DrawerDescription variant={drawerVariant}>
             {description}

@@ -5,6 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
 
 import { Button } from "../ui/button";
@@ -53,6 +54,7 @@ export default function GiftModal({
         )}
       </DialogTrigger>
       <DialogContent
+        onOpenAutoFocus={(event) => event.preventDefault()}
         className={`${isAssigned ? "bg-secondary-2" : "bg-primary-2"}`}
       >
         <DialogHeader>
@@ -109,22 +111,33 @@ export default function GiftModal({
           />
         )}
         <div className="flex gap-4">
+          <DialogClose asChild>
+            {isAssigned ? (
+              <Button variant="secondaryWhite" className="w-1/2">
+                Voltar
+              </Button>
+            ) : (
+              <Button variant="defaultWhite" className="w-1/2">
+                Cancelar
+              </Button>
+            )}
+          </DialogClose>
           {isAssigned ? (
-            <Button variant="secondary" className="w-full" asChild>
+            <Button variant="secondary" className="w-1/2" asChild>
               <Link href={url} target="_blank">
                 <ArrowSquareOut weight="bold" />
                 Ver na loja
               </Link>
             </Button>
           ) : submitLoading ? (
-            <Button className="w-full" type="submit" form="gift-form">
+            <Button className="w-1/2" type="submit" form="gift-form">
               <CircleNotch weight="bold" className="animate-spin" />
               Carregando
             </Button>
           ) : (
             <Button
               variant="defaultStrong"
-              className="w-full"
+              className="w-1/2"
               type="submit"
               form="gift-form"
             >
