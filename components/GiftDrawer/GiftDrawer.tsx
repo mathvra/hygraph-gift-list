@@ -29,6 +29,7 @@ interface GiftDrawerProps {
   url: string;
   id: string;
   refetch: any;
+  totalItems: number;
 }
 
 export default function GiftDrawer({
@@ -38,6 +39,7 @@ export default function GiftDrawer({
   url,
   refetch,
   id,
+  totalItems,
 }: GiftDrawerProps) {
   const [submitLoading, setSubmitLoading] = useState(false);
 
@@ -103,6 +105,7 @@ export default function GiftDrawer({
             id={id}
             refetch={refetch}
             setSubmitLoading={setSubmitLoading}
+            totalItems={totalItems}
           />
         )}
         <DrawerFooter>
