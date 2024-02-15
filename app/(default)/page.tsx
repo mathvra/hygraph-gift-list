@@ -1,5 +1,6 @@
 import Countdown from "@/components/Countdown/Countdown";
 import GiftList from "@/components/GiftList/GiftList";
+import Infos from "@/components/Infos/Infos";
 import type { Viewport } from "next";
 
 export const viewport: Viewport = {
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <main>
       <Countdown />
+      <Infos />
       <GiftList />
     </main>
   );
