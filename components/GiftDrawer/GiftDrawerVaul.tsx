@@ -9,7 +9,6 @@ import {
 import Link from "next/link";
 import { GiftForm } from "../GiftForm/GiftForm";
 import { useState } from "react";
-import { Input } from "../ui/input";
 
 interface GiftDrawerProps {
   isAssigned: boolean;
@@ -18,6 +17,7 @@ interface GiftDrawerProps {
   url: string;
   id: string;
   refetch: any;
+  totalItems: number;
 }
 
 export default function GiftDrawerVaul({
@@ -27,6 +27,7 @@ export default function GiftDrawerVaul({
   url,
   refetch,
   id,
+  totalItems,
 }: GiftDrawerProps) {
   const [submitLoading, setSubmitLoading] = useState(false);
 
@@ -89,6 +90,7 @@ export default function GiftDrawerVaul({
                 id={id}
                 refetch={refetch}
                 setSubmitLoading={setSubmitLoading}
+                totalItems={totalItems}
               />
             )}
             <div className="flex gap-4">

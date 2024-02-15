@@ -9,7 +9,7 @@ import GiftItemLoading from "../GiftItemLoading/GiftItemLoading";
 
 export default function GiftList() {
   const [loadingFetchMore, setLoadingFetchMore] = useState(false);
-  const loadingItems = 10;
+  const initialItemsToQuery = 14;
 
   const {
     data: giftList,
@@ -19,7 +19,7 @@ export default function GiftList() {
   } = useQuery(GET_PRODUCTS, {
     variables: {
       offset: 0,
-      limit: 10,
+      limit: initialItemsToQuery,
     },
   });
 
@@ -27,7 +27,7 @@ export default function GiftList() {
     <section className="container mx-auto my-4">
       <div className="grid grid-cols-wrapDefault lg:grid-cols-wrapLarge gap-4 mb-6">
         {loading
-          ? Array.from({ length: loadingItems }).map((item, index) => (
+          ? Array.from({ length: initialItemsToQuery }).map((item, index) => (
               <GiftItemLoading key={index} />
             ))
           : giftList.allProducts.map((giftItem: any, index: number) => (
@@ -41,6 +41,7 @@ export default function GiftList() {
                 imageUrl={
                   giftItem?.image?.asset?.url && giftItem.image.asset.url
                 }
+                totalItems={giftList.allProducts.length}
                 refetch={refetch}
               />
             ))}

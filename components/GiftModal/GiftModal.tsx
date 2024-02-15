@@ -26,6 +26,7 @@ interface GiftModalProps {
   url: string;
   id: string;
   refetch: any;
+  totalItems: number;
 }
 
 export default function GiftModal({
@@ -35,6 +36,7 @@ export default function GiftModal({
   url,
   refetch,
   id,
+  totalItems,
 }: GiftModalProps) {
   const [submitLoading, setSubmitLoading] = useState(false);
 
@@ -108,6 +110,7 @@ export default function GiftModal({
             id={id}
             refetch={refetch}
             setSubmitLoading={setSubmitLoading}
+            totalItems={totalItems}
           />
         )}
         <div className="flex gap-4">

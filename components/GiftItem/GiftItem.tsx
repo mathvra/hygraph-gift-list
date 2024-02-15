@@ -11,6 +11,7 @@ interface GiftItemProps {
   isAssigned: boolean;
   refetch: any;
   imageUrl: string;
+  totalItems: number;
 }
 
 export default function GiftItem({
@@ -21,6 +22,7 @@ export default function GiftItem({
   isAssigned,
   refetch,
   imageUrl,
+  totalItems,
 }: GiftItemProps) {
   return (
     <div className="flex flex-col h-80 border border-primary-2 rounded-lg">
@@ -61,6 +63,7 @@ export default function GiftItem({
           url={url}
           id={_id}
           refetch={refetch}
+          totalItems={totalItems}
         />
       </div>
     </div>

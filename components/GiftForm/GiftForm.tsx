@@ -1,5 +1,4 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -35,6 +34,7 @@ interface GiftFormProps {
   isAssigned: boolean;
   id: string;
   refetch: any;
+  totalItems: number;
   setSubmitLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -42,6 +42,7 @@ export function GiftForm({
   isAssigned,
   id,
   refetch,
+  totalItems,
   setSubmitLoading,
 }: GiftFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -79,7 +80,12 @@ export function GiftForm({
       }
     )
       .then((response) => response.json())
-      .then(() => refetch().then(() => setSubmitLoading(false)))
+      .then(() =>
+        refetch({
+          offset: 0,
+          limit: totalItems,
+        }).then(() => setSubmitLoading(false))
+      )
       .catch((error) => console.error(error));
   }
 
