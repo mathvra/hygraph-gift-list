@@ -1,6 +1,7 @@
 import Countdown from "@/components/Countdown/Countdown";
 import GiftList from "@/components/GiftList/GiftList";
 import Infos from "@/components/Infos/Infos";
+import PixPayment from "@/components/PixPayment/PixPayment";
 import type { Viewport } from "next";
 
 export const viewport: Viewport = {
@@ -15,6 +16,7 @@ export default function Home() {
     <main>
       <Countdown />
       <Infos />
+      <PixPayment />
       <GiftList />
     </main>
   );
