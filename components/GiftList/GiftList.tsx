@@ -4,8 +4,9 @@ import GET_PRODUCTS from "@/app/graphql/queries/products.gql";
 import GiftItem from "../GiftItem/GiftItem";
 import { useState } from "react";
 import { Button } from "../ui/button";
-import { CircleNotch } from "@phosphor-icons/react";
+import { CheckCircle, CircleNotch } from "@phosphor-icons/react";
 import GiftItemLoading from "../GiftItemLoading/GiftItemLoading";
+import { toast } from "sonner";
 
 export default function GiftList() {
   const [loadingFetchMore, setLoadingFetchMore] = useState(false);
@@ -61,7 +62,15 @@ export default function GiftList() {
                 variables: {
                   offset: giftList.allProducts.length,
                 },
-              }).then(() => setLoadingFetchMore(false));
+              }).then((result) => {
+                setLoadingFetchMore(false);
+                if (result.data.allProducts.length) {
+                  return;
+                }
+                toast.success("Todos os presentes carregados!", {
+                  icon: <CheckCircle size={24} weight="bold" />,
+                });
+              });
             }}
           >
             Carregar mais

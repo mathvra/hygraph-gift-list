@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import "../globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const raleway = Raleway({ subsets: ["latin-ext"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${raleway.className} flex flex-col min-h-screen bg-background`}
       >
+        <Toaster />
         <Analytics />
         <Header />
         <div className="grow bg-background">

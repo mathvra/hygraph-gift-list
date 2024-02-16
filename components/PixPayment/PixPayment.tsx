@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { Copy } from "@phosphor-icons/react/dist/ssr";
+import { toast } from "sonner";
+import { CheckSquareOffset, Copy } from "@phosphor-icons/react";
 
 export default function PixPayment() {
   const pixKey = "84994948711";
@@ -22,7 +23,14 @@ export default function PixPayment() {
           </p>
         </div>
         <div>
-          <Button onClick={() => navigator.clipboard.writeText(pixKey)}>
+          <Button
+            onClick={() => {
+              toast.success("Pix copiado!", {
+                icon: <CheckSquareOffset size={24} weight="bold" />,
+              });
+              navigator.clipboard.writeText(pixKey);
+            }}
+          >
             <Copy weight="bold" />
             Copiar
           </Button>

@@ -62,6 +62,14 @@ const config = {
           DEFAULT: "#1D1D1D",
           foreground: "#ffffff",
         },
+        success: {
+          DEFAULT: "#276600",
+          1: "#D4FFBA",
+        },
+        error: {
+          DEFAULT: "#FF5151",
+          1: "#FFDADA",
+        },
       },
       gridTemplateColumns: {
         wrapDefault: "repeat(auto-fill,minmax(8rem,1fr))",

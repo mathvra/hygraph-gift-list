@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { dataset, projectId, token, versionApi } from "@/env";
+import { toast } from "sonner";
+import { CheckCircle, WarningCircle } from "@phosphor-icons/react";
 
 const phoneValidation = new RegExp(
   /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{4})\-?(\d{4}))$/
@@ -84,9 +86,19 @@ export function GiftForm({
         refetch({
           offset: 0,
           limit: totalItems,
-        }).then(() => setSubmitLoading(false))
+        }).then(() => {
+          toast.success("Presente assinado com sucesso!", {
+            icon: <CheckCircle size={24} weight="bold" />,
+          });
+          setSubmitLoading(false);
+        })
       )
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        toast.error("Erro ao assinar o presente!", {
+          icon: <WarningCircle size={24} weight="bold" />,
+        });
+        console.error(error);
+      });
   }
 
   return (
