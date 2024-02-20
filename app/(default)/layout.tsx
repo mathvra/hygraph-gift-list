@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description: "Casamento de Lays e Matheus",
   formatDetection: {
     date: false,
+    telephone: false,
   },
 };
 

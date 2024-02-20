@@ -29,6 +29,7 @@
     "next-sanity": "^7.0.15",
     "next-themes": "^0.2.1",
     "react": "^18",
+    "react-countdown": "^2.3.5",
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",
     "react-spring-bottom-sheet": "^3.4.1",

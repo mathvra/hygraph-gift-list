@@ -1,4 +1,5 @@
 import Countdown from "@/components/Countdown/Countdown";
+import CountdownDate from "@/components/CountdownDate/CountdownDate";
 import GiftList from "@/components/GiftList/GiftList";
 import Infos from "@/components/Infos/Infos";
 import PixPayment from "@/components/PixPayment/PixPayment";
@@ -14,7 +15,8 @@ export const viewport: Viewport = {
 export default function Home() {
   return (
     <main>
-      <Countdown />
+      {/* <Countdown /> */}
+      <CountdownDate />
       <Infos />
       <PixPayment />
       <GiftList />
