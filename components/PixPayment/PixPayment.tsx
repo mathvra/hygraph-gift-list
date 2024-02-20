@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { CheckSquareOffset, Copy } from "@phosphor-icons/react";
 
 export default function PixPayment() {
-  const pixKey = "84994948711";
+  const pixKey = "84996948711";
 
   return (
     <div className="container mx-auto flex text-primary-0">
@@ -17,6 +17,9 @@ export default function PixPayment() {
           <h3 className="font-bold">Pix para presente</h3>
           <p>
             Prefere dar um presente em dinheiro? Faça um pix do valor desejado!
+          </p>
+          <p>
+            <b>Nome:</b> Matheus Vinícius Ribeiro Araújo
           </p>
           <p>
             <b>Chave:</b> {pixKey}

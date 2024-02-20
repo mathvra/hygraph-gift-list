@@ -12,6 +12,9 @@ const raleway = Raleway({ subsets: ["latin-ext"] });
 export const metadata: Metadata = {
   title: "Lays e Matheus",
   description: "Casamento de Lays e Matheus",
+  formatDetection: {
+    date: false,
+  },
 };
 
 export default function RootLayout({
