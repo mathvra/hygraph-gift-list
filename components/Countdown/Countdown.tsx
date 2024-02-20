@@ -41,10 +41,18 @@ export default function Countdown() {
       <div className="container mx-auto text-secondary-2 flex flex-col lg:flex-row gap-2 lg:gap-4 items-center justify-center py-4">
         <div>Faltam apenas:</div>
         <div className="gap-2 font-bold flex text-3xl lg:text-4xl">
-          <div>{`${timeRemaining.days} dias`}</div>
-          <div>{`${timeRemaining.hours}h`}</div>
-          <div>{`${timeRemaining.minutes}m`}</div>
-          <div>{`${timeRemaining.seconds}s`}</div>
+          <div suppressHydrationWarning>{`${Number(
+            timeRemaining.days
+          )} dias`}</div>
+          <div suppressHydrationWarning>{`${Number(
+            timeRemaining.hours
+          )}h`}</div>
+          <div suppressHydrationWarning>{`${Number(
+            timeRemaining.minutes
+          )}m`}</div>
+          <div suppressHydrationWarning>{`${Number(
+            timeRemaining.seconds
+          )}s`}</div>
         </div>
         <div>para o grande dia!</div>
       </div>
