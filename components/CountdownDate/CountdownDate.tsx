@@ -3,7 +3,7 @@ import Countdown from "react-countdown";
 
 export default function CountdownCustom() {
   const targetDate = "2024-08-17:00:00";
-  const targetTime = new Date(targetDate).getTime();
+  const targetTime = new Date(targetDate);
 
   const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
     if (completed) {
@@ -24,7 +24,7 @@ export default function CountdownCustom() {
   };
 
   return (
-    <div className="bg-secondary-0">
+    <div className="flex bg-secondary-0">
       <Countdown date={targetTime} renderer={renderer} />,
     </div>
   );
