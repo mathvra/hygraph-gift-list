@@ -1,4 +1,5 @@
 "use client";
+import { Confetti } from "@phosphor-icons/react";
 import Countdown from "react-countdown";
 
 export default function CountdownCustom() {
@@ -7,7 +8,14 @@ export default function CountdownCustom() {
 
   const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
     if (completed) {
-      return <h1>Chegou o grande dia!</h1>;
+      return (
+        <div className="container mx-auto flex flex-col xl:flex-row py-6 text-secondary-2 justify-center items-center gap-4">
+          <h2 className="font-bold text-3xl xl:text-5xl">
+            Chegou o grande dia!
+          </h2>
+          <Confetti size={52} weight="bold" />
+        </div>
+      );
     }
     return (
       <div className="container mx-auto text-secondary-2 flex flex-col lg:flex-row gap-2 lg:gap-4 items-center justify-center py-4">
