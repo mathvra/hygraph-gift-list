@@ -15,8 +15,8 @@ export const viewport: Viewport = {
 export default function Home() {
   return (
     <main>
-      {/* <Countdown /> */}
-      <CountdownDate />
+      <Countdown />
+      {/* <CountdownDate /> */}
       <Infos />
       <PixPayment />
       <GiftList />

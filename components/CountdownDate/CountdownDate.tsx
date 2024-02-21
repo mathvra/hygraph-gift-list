@@ -4,7 +4,10 @@ import Countdown from "react-countdown";
 
 export default function CountdownCustom() {
   const targetDate = "2024-08-17:00:00";
-  const targetTime = new Date(targetDate);
+  const targetTime = new Date(Date.parse("08 Aug 2024"));
+
+  // console.log(Date.parse("08 Aug 2024"));
+  console.log(new Date(Date.parse("08 Aug 2024")));
 
   const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
     if (completed) {
