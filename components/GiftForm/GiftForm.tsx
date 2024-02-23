@@ -70,19 +70,15 @@ export function GiftForm({
       },
     ];
 
-    fetch(
-      `https://${projectId}.api.sanity.io/${versionApi}/data/mutate/${dataset}`,
-      {
-        method: "post",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ mutations }),
-      }
-    )
+    fetch(`/api/product-mutation`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ mutations }),
+    })
       .then((response) => response.json())
-      .then(() =>
+      .then(() => {
         refetch({
           offset: 0,
           limit: totalItems,
@@ -91,8 +87,8 @@ export function GiftForm({
             icon: <CheckCircle size={24} weight="bold" />,
           });
           setSubmitLoading(false);
-        })
-      )
+        });
+      })
       .catch((error) => {
         toast.error("Erro ao assinar o presente!", {
           icon: <WarningCircle size={24} weight="bold" />,
