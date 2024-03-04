@@ -1,8 +1,8 @@
-import Countdown from "@/components/Countdown/Countdown";
 import GiftList from "@/components/GiftList/GiftList";
 import Infos from "@/components/Infos/Infos";
 import PixPayment from "@/components/PixPayment/PixPayment";
 import type { Viewport } from "next";
+import dynamic from "next/dynamic";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -11,10 +11,15 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
+const CountdownNoSSR = dynamic(
+  () => import("@/components/Countdown/Countdown"),
+  { ssr: false }
+);
+
 export default function Home() {
   return (
     <main>
-      <Countdown />
+      <CountdownNoSSR />
       <Infos />
       <PixPayment />
       <GiftList />
