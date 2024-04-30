@@ -29,7 +29,9 @@ export default function RootLayout({
   const siteId = 4964766;
   const hotjarVersion = 6;
 
-  Hotjar.init(siteId, hotjarVersion);
+  Hotjar.init(siteId, hotjarVersion, {
+    debug: true,
+  });
 
   return (
     <html lang="pt-BR">
