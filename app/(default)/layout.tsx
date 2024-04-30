@@ -8,7 +8,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import Script from "next/script";
+import Hotjar from "@hotjar/browser";
 
 const raleway = Raleway({ subsets: ["latin-ext"] });
 
@@ -26,6 +26,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteId = 4964766;
+  const hotjarVersion = 6;
+
+  Hotjar.init(siteId, hotjarVersion);
+
   return (
     <html lang="pt-BR">
       <body
@@ -41,15 +46,6 @@ export default function RootLayout({
         <Footer />
       </body>
       <GoogleAnalytics gaId="G-4GQMB366NH" />
-      <Script strategy="lazyOnload" id="smartlook">
-        {`    window.smartlook||(function(d) {
-              var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-              var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-              c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
-              })(document);
-              smartlook('init', 'a0c154e4970b5a0521e6b02d8b7870795fd129c5', { region: 'eu' });
-          `}
-      </Script>
     </html>
   );
 }
