@@ -9,7 +9,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Hotjar from "@hotjar/browser";
-import { useEffect } from "react";
 
 const raleway = Raleway({ subsets: ["latin-ext"] });
 
@@ -30,11 +29,9 @@ export default function RootLayout({
   const siteId = 4964766;
   const hotjarVersion = 6;
 
-  useEffect(() => {
-    Hotjar.init(siteId, hotjarVersion, {
-      debug: true,
-    });
-  }, []);
+  Hotjar.init(siteId, hotjarVersion, {
+    debug: true,
+  });
 
   return (
     <html lang="pt-BR">
