@@ -3,9 +3,11 @@ import { Raleway } from "next/font/google";
 import ApolloWrapper from "../ApolloWrapper";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { Analytics } from "@vercel/analytics/react";
 import "../globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const raleway = Raleway({ subsets: ["latin-ext"] });
 
@@ -30,12 +32,14 @@ export default function RootLayout({
       >
         <Toaster />
         <Analytics />
+        <SpeedInsights />
         <Header />
         <div className="grow bg-background">
           <ApolloWrapper>{children}</ApolloWrapper>
         </div>
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-4GQMB366NH" />
     </html>
   );
 }

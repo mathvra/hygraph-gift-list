@@ -21,7 +21,6 @@ export default function Home() {
     <main>
       <CountdownNoSSR />
       <Infos />
-      <PixPayment />
       <GiftList />
     </main>
   );
