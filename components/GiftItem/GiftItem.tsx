@@ -1,27 +1,27 @@
 import Image from "next/image";
-import GiftDrawer from "../GiftDrawer/GiftDrawer";
-import GiftDrawerVaul from "../GiftDrawer/GiftDrawerVaul";
 import GiftModal from "../GiftModal/GiftModal";
 
 interface GiftItemProps {
-  name: string;
+  productName: string;
   description: string;
   url: string;
   _id: string;
   isAssigned: boolean;
   refetch: any;
   imageUrl: string;
+  assignedName: string;
   totalItems: number;
 }
 
 export default function GiftItem({
-  name,
+  productName,
   description,
   url,
   _id,
   isAssigned,
   refetch,
   imageUrl,
+  assignedName,
   totalItems,
 }: GiftItemProps) {
   return (
@@ -39,7 +39,7 @@ export default function GiftItem({
           )}
           <Image
             src={imageUrl}
-            alt={name}
+            alt={productName}
             width={300}
             height={300}
             className="h-32 object-contain"
@@ -53,17 +53,18 @@ export default function GiftItem({
         } flex-grow flex flex-col justify-between p-4 gap-4 rounded-b-lg`}
       >
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold leading-4 line-clamp-2">{name}</h3>
+          <h3 className="font-bold leading-4 line-clamp-2">{productName}</h3>
           <p className="text-xs line-clamp-3">{description}</p>
         </div>
         <GiftModal
           isAssigned={isAssigned}
-          name={name}
+          productName={productName}
           description={description}
           url={url}
           id={_id}
           refetch={refetch}
           totalItems={totalItems}
+          assignedName={assignedName}
         />
       </div>
     </div>

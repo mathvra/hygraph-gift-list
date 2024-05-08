@@ -1,149 +1,60 @@
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
   DrawerBar,
+  DrawerClose,
 } from "@/components/ui/drawer";
+import { CheckCircle } from "@phosphor-icons/react";
+import { Dispatch, SetStateAction } from "react";
 import { Button } from "../ui/button";
-import {
-  ArrowSquareOut,
-  CircleNotch,
-  Eye,
-  PencilSimpleLine,
-} from "@phosphor-icons/react";
-import Link from "next/link";
-import { GiftForm } from "../GiftForm/GiftForm";
-import { useState } from "react";
-import { Label } from "@radix-ui/react-label";
-import { Input } from "../ui/input";
 
 interface GiftDrawerProps {
-  isAssigned: boolean;
-  name: string;
-  description: string;
-  url: string;
-  id: string;
-  refetch: any;
-  totalItems: number;
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  assignedName: string;
+  productName: string;
 }
 
 export default function GiftDrawer({
-  isAssigned,
-  name,
-  description,
-  url,
-  refetch,
-  id,
-  totalItems,
+  open,
+  setOpen,
+  assignedName,
+  productName,
 }: GiftDrawerProps) {
-  const [submitLoading, setSubmitLoading] = useState(false);
-
-  const drawerVariant = isAssigned ? "secondary" : "default";
+  const formatedAssignedName = assignedName?.replace(/ .*/, "");
 
   return (
-    <Drawer>
-      <DrawerTrigger asChild>
-        {isAssigned ? (
-          <Button variant={"secondary"} className="w-full">
-            <Eye weight="bold" />
-            Detalhes
-          </Button>
-        ) : (
-          <Button className="w-full">
-            <PencilSimpleLine weight="bold" />
-            Assinar
-          </Button>
-        )}
-      </DrawerTrigger>
-      <DrawerContent variant={drawerVariant}>
+    <Drawer open={open} onOpenChange={setOpen}>
+      <DrawerContent>
         <DrawerHeader>
-          <DrawerBar variant={drawerVariant} />
-          <DrawerTitle variant={drawerVariant}>{name}</DrawerTitle>
-          <DrawerDescription variant={drawerVariant}>
-            {description}
-          </DrawerDescription>
-          {!isAssigned && (
-            <Button asChild>
-              <Link href={url} target="_blank">
-                <ArrowSquareOut weight="bold" />
-                Ver na loja
-              </Link>
-            </Button>
-          )}
+          <DrawerBar />
+          <DrawerTitle>
+            <div className="flex justify-center">
+              <CheckCircle size={48} weight="bold" />
+            </div>
+          </DrawerTitle>
         </DrawerHeader>
-        <div>
-          {isAssigned ? (
-            <div>
-              <span className="text-secondary-0 font-bold">
-                Esse presente já foi assinado!
-              </span>
-              <p className="text-secondary-0 text-sm">
-                Não se preocupe, você pode escolher outro presente que esteja
-                disponível na lista!
-              </p>
-            </div>
-          ) : (
-            <div>
-              <span className="text-primary-0 font-bold">
-                Assinar presente:
-              </span>
-              <p className="text-sm">
-                Preencha suas informações para garantir a sua assinatura do
-                presente
-              </p>
-            </div>
-          )}
+        <div className="flex justify-center items-center flex-col gap-4">
+          <div>
+            <span className="font-bold text-2xl">{`Obrigado ${formatedAssignedName}!`}</span>
+          </div>
+          <div className="flex flex-col w-full">
+            <span className="text-center">
+              Acabei de confirmar sua assinatura do presente:{" "}
+            </span>
+            <span className="font-bold text-center">{productName}</span>
+          </div>
         </div>
-        {!isAssigned && (
-          <GiftForm
-            isAssigned={isAssigned}
-            id={id}
-            refetch={refetch}
-            setSubmitLoading={setSubmitLoading}
-            totalItems={totalItems}
-          />
-        )}
         <DrawerFooter>
-          <div className="flex gap-4">
+          <div className="flex justify-center">
             <DrawerClose asChild>
-              {isAssigned ? (
-                <Button variant="secondaryWhite" className="w-1/2">
-                  Voltar
-                </Button>
-              ) : (
-                <Button variant="defaultWhite" className="w-1/2">
-                  Cancelar
-                </Button>
-              )}
+              <Button variant="default" className="w-fit">
+                Voltar para lista
+              </Button>
             </DrawerClose>
-            {isAssigned ? (
-              <Button variant="secondary" className="w-1/2" asChild>
-                <Link href={url} target="_blank">
-                  <ArrowSquareOut weight="bold" />
-                  Ver na loja
-                </Link>
-              </Button>
-            ) : submitLoading ? (
-              <Button className="w-1/2" type="submit" form="gift-form">
-                <CircleNotch weight="bold" className="animate-spin" />
-                Carregando
-              </Button>
-            ) : (
-              <Button
-                variant="defaultStrong"
-                className="w-1/2"
-                type="submit"
-                form="gift-form"
-              >
-                <PencilSimpleLine weight="bold" />
-                Assinar
-              </Button>
-            )}
           </div>
         </DrawerFooter>
       </DrawerContent>

@@ -12,9 +12,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { dataset, projectId, token, versionApi } from "@/env";
 import { toast } from "sonner";
 import { CheckCircle, WarningCircle } from "@phosphor-icons/react";
+import { Dispatch, SetStateAction } from "react";
 
 const phoneValidation = new RegExp(
   /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{4})\-?(\d{4}))$/
@@ -38,6 +38,8 @@ interface GiftFormProps {
   refetch: any;
   totalItems: number;
   setSubmitLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  modalOpen: Dispatch<SetStateAction<boolean>>;
+  drawerOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export function GiftForm({
@@ -46,6 +48,8 @@ export function GiftForm({
   refetch,
   totalItems,
   setSubmitLoading,
+  modalOpen,
+  drawerOpen,
 }: GiftFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -83,9 +87,11 @@ export function GiftForm({
           offset: 0,
           limit: totalItems,
         }).then(() => {
-          toast.success("Presente assinado com sucesso!", {
-            icon: <CheckCircle size={24} weight="bold" />,
-          });
+          // toast.success("Presente assinado com sucesso!", {
+          //   icon: <CheckCircle size={24} weight="bold" />,
+          // });
+          modalOpen(false);
+          drawerOpen(true);
           setSubmitLoading(false);
         });
       })

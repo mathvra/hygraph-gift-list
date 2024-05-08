@@ -34,7 +34,7 @@ export default function GiftList() {
           : giftList.allProducts.map((giftItem: any, index: number) => (
               <GiftItem
                 key={index}
-                name={giftItem.name}
+                productName={giftItem.name}
                 description={giftItem.description}
                 url={giftItem.url}
                 _id={giftItem._id}
@@ -42,6 +42,7 @@ export default function GiftList() {
                 imageUrl={
                   giftItem?.image?.asset?.url && giftItem.image.asset.url
                 }
+                assignedName={giftItem.assignedName}
                 totalItems={giftList.allProducts.length}
                 refetch={refetch}
               />
