@@ -17,26 +17,26 @@ export default function Infos() {
             <Info size={28} weight="bold" className="text-secondary" />
             <h3 className="font-bold text-xl">Como usar:</h3>
           </div>
-          <div className="flex gap-2 flex-wrap">
-            <div className="flex flex-col p-4 justify-center items-center bg-primary-2 gap-4 rounded-lg w-[calc(50%-0.5rem)] lg:flex-1">
+          <div className="grid grid-cols-2 gap-2 lg:flex">
+            <div className="flex flex-col p-4 justify-center items-center bg-primary-2 gap-4 rounded-lg lg:flex-1">
               <Gift size={32} weight="bold" />
               <span className="text-xs text-center font-bold">
                 1. Escolha um presente
               </span>
             </div>
-            <div className="flex flex-col p-4 justify-center items-center bg-primary-2 gap-4 rounded-lg w-[calc(50%-0.5rem)] lg:flex-1">
+            <div className="flex flex-col p-4 justify-center items-center bg-primary-2 gap-4 rounded-lg lg:flex-1">
               <PencilSimpleLine size={32} weight="bold" />
               <span className="text-xs text-center font-bold">
                 2. Assine o presente
               </span>
             </div>
-            <div className="flex flex-col p-4 justify-center items-center bg-primary-2 gap-4 rounded-lg w-[calc(50%-0.5rem)] lg:flex-1">
+            <div className="flex flex-col p-4 justify-center items-center bg-primary-2 gap-4 rounded-lg lg:flex-1">
               <ArrowSquareOut size={32} weight="bold" />
               <span className="text-xs text-center font-bold">
                 3. Compre pelo link
               </span>
             </div>
-            <div className="flex flex-col p-4 justify-center items-center bg-primary-2 gap-4 rounded-lg w-[calc(50%-0.5rem)] lg:flex-1">
+            <div className="flex flex-col p-4 justify-center items-center bg-primary-2 gap-4 rounded-lg lg:flex-1">
               <House size={32} weight="bold" />
               <span className="text-xs text-center font-bold">
                 4. Envie para nossa casa
