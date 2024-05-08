@@ -34,11 +34,12 @@ const DrawerOverlay = React.forwardRef<
 ));
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
-const drawerBartVariants = cva("mx-auto h-2 w-[100px] rounded-full", {
+const drawerBarVariants = cva("mx-auto h-2 w-[100px] rounded-full", {
   variants: {
     variant: {
       default: "bg-primary-0",
       secondary: "bg-secondary-0",
+      success: "bg-success",
     },
   },
   defaultVariants: {
@@ -47,20 +48,21 @@ const drawerBartVariants = cva("mx-auto h-2 w-[100px] rounded-full", {
 });
 export interface DrawerBarProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof drawerBartVariants> {}
+    VariantProps<typeof drawerBarVariants> {}
 
 const DrawerBar = ({ className, variant, ...props }: DrawerBarProps) => (
-  <div className={cn(drawerBartVariants({ variant, className }))} {...props} />
+  <div className={cn(drawerBarVariants({ variant, className }))} {...props} />
 );
 DrawerBar.displayName = "DrawerBar";
 
 const drawerContentVariants = cva(
-  "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col gap-4 p-4 rounded-t-[10px] border ",
+  "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col gap-4 p-4 rounded-t-[10px]",
   {
     variants: {
       variant: {
         default: "bg-primary-2",
         secondary: "bg-secondary-2",
+        success: "bg-success-1",
       },
     },
     defaultVariants: {
@@ -112,6 +114,7 @@ const drawerTitleVariants = cva(
       variant: {
         default: "text-primary-0",
         secondary: "text-secondary-0",
+        success: "text-success",
       },
     },
     defaultVariants: {
@@ -140,6 +143,7 @@ const drawerDescriptionVariants = cva("text-sm text-muted-foreground", {
     variant: {
       default: "text-primary-0",
       secondary: "text-secondary-0",
+      success: "text-success",
     },
   },
   defaultVariants: {

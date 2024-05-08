@@ -28,10 +28,10 @@ export default function GiftDrawer({
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerContent>
+      <DrawerContent variant={"success"}>
         <DrawerHeader>
-          <DrawerBar />
-          <DrawerTitle>
+          <DrawerBar variant={"success"} />
+          <DrawerTitle variant={"success"}>
             <div className="flex justify-center">
               <CheckCircle size={48} weight="bold" />
             </div>
@@ -39,19 +39,21 @@ export default function GiftDrawer({
         </DrawerHeader>
         <div className="flex justify-center items-center flex-col gap-4">
           <div>
-            <span className="font-bold text-2xl">{`Obrigado ${formatedAssignedName}!`}</span>
+            <span className="font-bold text-2xl text-success">{`Obrigado, ${formatedAssignedName}!`}</span>
           </div>
           <div className="flex flex-col w-full">
-            <span className="text-center">
+            <span className="text-center text-success">
               Acabei de confirmar sua assinatura do presente:{" "}
             </span>
-            <span className="font-bold text-center">{productName}</span>
+            <span className="font-bold text-center text-success">
+              {productName}
+            </span>
           </div>
         </div>
         <DrawerFooter>
           <div className="flex justify-center">
             <DrawerClose asChild>
-              <Button variant="default" className="w-fit">
+              <Button variant="success" className="w-fit">
                 Voltar para lista
               </Button>
             </DrawerClose>
