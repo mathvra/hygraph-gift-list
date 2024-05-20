@@ -7,7 +7,7 @@ import "../globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const raleway = Raleway({ subsets: ["latin-ext"] });
 
@@ -39,7 +39,7 @@ export default function RootLayout({
         </div>
         <Footer />
       </body>
-      <GoogleAnalytics gaId="G-4GQMB366NH" />
+      <GoogleTagManager gtmId="GTM-T5VGZRXT" />
     </html>
   );
 }
