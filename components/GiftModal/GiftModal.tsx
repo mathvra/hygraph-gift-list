@@ -49,17 +49,13 @@ export default function GiftModal({
     <>
       <Dialog open={openModal} onOpenChange={setOpenModal}>
         <DialogTrigger asChild>
-          {isAssigned ? (
-            <Button variant={"secondary"} className="w-full">
-              <Eye weight="bold" />
-              Detalhes
-            </Button>
-          ) : (
-            <Button className="w-full">
-              <PencilSimpleLine weight="bold" />
-              Assinar
-            </Button>
-          )}
+          <Button
+            variant={`${isAssigned ? "secondary" : "default"}`}
+            className="w-full"
+          >
+            <Eye weight="bold" />
+            Detalhes
+          </Button>
         </DialogTrigger>
         <DialogContent
           onOpenAutoFocus={(event) => event.preventDefault()}
