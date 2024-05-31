@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 export default function Countdown() {
-  const targetDate = new Date(Date.parse("08 Aug 2024"));
+  const targetDate = new Date(Date.parse("17 August 2024"));
   const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
 
   useEffect(() => {
@@ -18,13 +18,19 @@ export default function Countdown() {
   function calculateTimeRemaining() {
     const targetTime = new Date(targetDate).getTime();
     const currentTime = new Date().getTime();
+
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    const currentTimeToDay = currentDate.getTime();
+
     const timeDifference = targetTime - currentTime;
+    const timeDifferenceToDay = targetTime - currentTimeToDay;
 
     if (timeDifference <= 0) {
       return { days: 0, hours: 0, minutes: 0, seconds: 0 };
     }
 
-    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const days = Math.floor(timeDifferenceToDay / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
       (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
